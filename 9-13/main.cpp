@@ -21,7 +21,7 @@ int main() {
         file >> month >> day >> year;
         // Print stuf.
         cout << month << "/" << day << "/" << year << endl;
-        // Incriment iterator ifyou only need to do it x amoutn of times.
+        // Incriment iterator if you only need to do it x amount Sof times.
         // times++;
     }
     
