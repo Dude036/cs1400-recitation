@@ -88,8 +88,9 @@ std::vector<int> generateRandom(int min, int max, int iter) {
 }
 
 /**
- * @brief Write a vector to a file, using enters to differentiate the numbers.
+ * @brief Write a vector to a file, given a number of columns seperated by tabs.
  * @param v Vector to write
+ * @param column Numbers of columns to write to file
  */
 void writeToFile(std::vector<int> v, int column) {
     std::ofstream out;
