@@ -9,10 +9,11 @@ std::string GENERATE_NUMBERS = "-n";
 std::string MAX_NUMBER = "-a";
 std::string MIN_NUMBER = "-i";
 std::string HELP_MESSAGE = "-h";
+std::string COLUMNED_NUMBERS = "-c";
 
 // Function Declaration
 std::vector<int> generateRandom(int, int, int);
-void writeToFile(std::vector<int>);
+void writeToFile(std::vector<int>, int);
 
 /**
  * @brief The main function
@@ -25,6 +26,7 @@ int main(int argc, char* argv[]) {
     int upper = 50;
     int lower = 1;
     int iter = 50;
+    int column = 1;
     
     if (argc % 2 == 0) {
         std::cout << "You have an odd number of arguments. Fix that." << std::endl;
@@ -49,11 +51,18 @@ int main(int argc, char* argv[]) {
             if (S.compare(GENERATE_NUMBERS) == 0) {
                 iter = std::stoi(arg);
             }
+            
+            if (S.compare(COLUMNED_NUMBERS) == 0) {
+                column = std::stoi(arg);
+                if (column <= 0) {
+                    column = 1;
+                }
+            }
         }
         // Put data into the vector
         std::vector<int> v = generateRandom(lower, upper, iter);
         // Send to print
-        writeToFile(v);
+        writeToFile(v, column);
     }
     
     return 0;
@@ -82,14 +91,31 @@ std::vector<int> generateRandom(int min, int max, int iter) {
  * @brief Write a vector to a file, using enters to differentiate the numbers.
  * @param v Vector to write
  */
-void writeToFile(std::vector<int> v) {
+void writeToFile(std::vector<int> v, int column) {
     std::ofstream out;
     out.open("random.txt");
-    for (int i = 0; i < v.size(); ++i) {
-        out << v[i];
-        if (i != v.size() - 1) {
+    
+    for (int i = 0; i < v.size(); i) {
+        int j;
+        for (j = 0; j < column && i+j < v.size(); ++j) {
+            out << v[i+j] << "\t";
+        }
+        i += j;
+        if (i < v.size()) {
             out << std::endl;
         }
     }
+    
+    
+    /*
+    for (int i = 0; i < v.size(); ++i) {
+        if (i % column == 0) {
+            out << v[i];
+            if (i != v.size() - 1)
+                out << std::endl;
+        } else {
+            out << v[i] << "\t";
+        }
+    }*/
     out.close();
 }
