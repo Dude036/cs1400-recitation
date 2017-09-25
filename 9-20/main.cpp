@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
 
-// using namespace std;  // I took this off becauseI wanted to show you how to do it a different way.
+// using namespace std;  // I took this off because I wanted to show you how to do it a different way.
 
 const int ARRAY_SIZE = 50;
 // Function Declarations
@@ -47,7 +47,7 @@ int main() {
             Counter Initialization - This is the definition of your counter.
             Conditional Statement: Similair to an if statement, this is what determines iterating through the loop again, or not.
             Incriment Counter: Incriment the counter you made so you don't run through an infinite loop.    */
-        for (int i = 0; i < lines; ++i){
+        for (int i = 0; i < lines; ++i) {
             if (numbers[i] > 50) {
                 // largerThan50 will return a bool. Otherwise known as a boolean value.
                 // Booleans hold either true or false. It's a single bit of data.
@@ -64,9 +64,9 @@ int main() {
         averageRecipricalBelow50 /= countBelow50;
         
         // Print results.
-        std::cout << "There were " << evenNumbersAbove50 << " even numbers below 50." << std::endl;
+        std::cout << "There were " << evenNumbersAbove50 << " even numbers above 50." << std::endl;
         std::cout << "The average recoprical of the numbers below 50 was " << averageRecipricalBelow50 << "." << std::endl;
-        std::cout << "That average was based off of "<< countBelow50 << " numbers."<< std::endl;
+        std::cout << "That average was based off of "<< lines << " numbers."<< std::endl;
     } else {  // Catch all statement for file opening errors.
         std::cout << "The file could not be opened." << std::endl;
     }
@@ -109,5 +109,5 @@ double smallerThan50(int num) {
         return 0.0;
     }
     // I could have saved this variable, but i cast the integers to floats to do themath on the same line.
-    return (float) 1/num;
+    return (double) 1/num;
 }
