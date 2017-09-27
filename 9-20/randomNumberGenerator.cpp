@@ -106,17 +106,5 @@ void writeToFile(std::vector<int> v, int column) {
             out << std::endl;
         }
     }
-    
-    
-    /*
-    for (int i = 0; i < v.size(); ++i) {
-        if (i % column == 0) {
-            out << v[i];
-            if (i != v.size() - 1)
-                out << std::endl;
-        } else {
-            out << v[i] << "\t";
-        }
-    }*/
     out.close();
 }
