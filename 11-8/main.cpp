@@ -33,7 +33,8 @@ int main() {
 
 // This is pass by reference. Instead of passing the literal value, you send the
 // Address of the two variables. I.e. you're editing stuff in RAM than some 
-// arbitrary place on the CPU. This changes the numbers when used.
+// arbitrary place on the CPU. This changes the numbers in the function that
+// called  it.
 void swap(int& a, int& b) {
     int temp = a;
     a = b;
