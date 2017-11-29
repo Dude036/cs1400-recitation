@@ -27,9 +27,9 @@ struct sellableItem {
     
     /**
      * Parametered Constructor
-     * @param _iN Item Name
-     * @param _sS Store Stock
-     * @param _rP Retail Price
+     * @param std::string Item Name
+     * @param int Store Stock
+     * @param double Retail Price
      */
     sellableItem(std::string _iN, int _sS, double _rP) {
         itemName = _iN;
@@ -68,7 +68,6 @@ class Shop {
      * Prints all of the items for sale in the store
      */
     void printAllItems() {
-        std::cout << "Welcome to " << storeName << "!" << std::endl;
         std::cout << std::left << std::setw(PRINT_WIDTH_NAME) << "Name"
             << std::setw(PRINT_WIDTH_STOCK) << "Stock"
             << std::setw(PRINT_WIDTH_PRICE) << "Price" << std::endl; 
@@ -127,8 +126,9 @@ class Shop {
      * add an item to the inventory. Will increase stock and price if the item
      * is already in the store's inventory
      * @param sellableItem Item being added to the inventory
+     * @param bool Whether to print or not. Default true
      */
-    void getShipment(sellableItem delivery) {
+    void getShipment(sellableItem delivery, bool print = true) {
         int i = getShelfNumber(delivery);
         if (i < 0) {
             // Item isn't in the data base.
@@ -137,7 +137,9 @@ class Shop {
             itemsInStock[i].storeStock += delivery.storeStock;
             itemsInStock[i].retailPrice = delivery.retailPrice;
         }
-        std::cout << "Item added to inventory." << std::endl;
+        if (print){
+            std::cout << "Item added to inventory." << std::endl;
+        }
     }
     
     std::string storeName;
