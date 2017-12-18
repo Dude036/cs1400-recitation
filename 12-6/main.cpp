@@ -6,16 +6,21 @@ void red(int i) {
 }
 
 void red(int i, int j) {
-    // does stuff here
+   // does stuff here
 }
 
+
 class Object {
+    public:
     class Thing {
         
     };
-    
+    void dothing();    
 };
 
+void Object::dothing() {
+    
+}
 int total(int size, int arr[]);
 int main() {
     Object o;
@@ -33,6 +38,10 @@ int main() {
     for (auto i : arr) {
         cout << i;
     }
+    int a[2][2] {
+        {1, 2},
+        {3, 4}
+    };
     
     return 0;
 }
@@ -45,6 +54,3 @@ int total(int size, int arr[]) {
     return total;
 }
 
-
-
-Thomas Edison was the first human voice recorded
